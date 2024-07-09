@@ -1,23 +1,48 @@
-import { Hello } from 'containers/Hello';
-import { useNavigate } from 'react-router';
+import styled from '@emotion/styled';
+import { mediaScreen } from 'components/cssToken/mediaScreen';
+import GNBCommunity from 'components/navigation/GNBCommunity';
+import { addImageQuery } from 'components/utils/addImageQuery';
 
 function HomePage() {
-  const navigate = useNavigate();
   return (
-    <div>
-      <main>
-        <Hello />
-        <button
-          type='button'
-          onClick={() => {
-            navigate('/404');
-          }}
-        >
-          [페이지 확인용 버튼] 404에러로 이동
-        </button>
-      </main>
-    </div>
+    <Container>
+      <GNBCommunity
+        leftSlot={
+          <StyledKconLogo
+            src={addImageQuery(`/static/icons/gnb-logo.png`)}
+            alt=''
+          />
+        }
+        rightSlot={
+          <RightMenuSection>
+            <ServiceButton>서비스 문의</ServiceButton>
+          </RightMenuSection>
+        }
+        box
+        removeAnimation
+        removeHiddenOverflow
+      />
+    </Container>
   );
 }
 
 export default HomePage;
+
+const Container = styled.div`
+  ${mediaScreen};
+  background-color: white;
+  position: relative;
+  height: 100vh;
+`;
+
+const StyledKconLogo = styled.img`
+  width: 145px;
+`;
+
+const RightMenuSection = styled.div`
+  width: 145px;
+`;
+
+const ServiceButton = styled.div`
+  width: 145px;
+`;
