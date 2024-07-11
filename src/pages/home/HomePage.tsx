@@ -3,25 +3,29 @@ import { mediaScreen } from 'components/cssToken/mediaScreen';
 import GNBCommunity from 'components/navigation/GNBCommunity';
 import { addImageQuery } from 'components/utils/addImageQuery';
 import * as Colors from 'components/cssToken/colors';
-import { Caption12R } from 'components/fonts/captions';
-import GlobalIcon from 'components/icons/globalIcon';
+import GlobalIcon from 'components/icons/GlobalIcon';
+import { ArrowIcon } from 'components/icons';
+import Footer from 'components/footer/Footer';
+import * as Button from 'components/button';
 
 function HomePage() {
   return (
     <Container>
       <GNBCommunity
+        height={70}
         leftSlot={
           <StyledKconLogo
             src={addImageQuery(`/static/icons/gnb-logo.png`)}
-            alt=''
+            alt='logo'
           />
         }
         rightSlot={
           <RightMenuSection>
-            <ServiceButton>서비스 문의</ServiceButton>
-            <AdServiceButton>광고 문의</AdServiceButton>
+            <Button.GnbButton text='서비스 문의' />
+            <Button.GnbButton text='광고 문의' />
             <GlobalButton>
               <GlobalIcon color={Colors.Neutral700} />
+              <ArrowIcon color={Colors.Neutral700} />
             </GlobalButton>
           </RightMenuSection>
         }
@@ -29,6 +33,7 @@ function HomePage() {
         removeAnimation
         removeHiddenOverflow
       />
+      <Footer />
     </Container>
   );
 }
@@ -51,29 +56,9 @@ const RightMenuSection = styled.div`
   gap: 16px;
 `;
 
-const ServiceButton = styled.div`
-  padding: 7px 16px;
-  border-radius: 50px;
-  background-color: ${Colors.Neutral100};
-  ${Caption12R};
-  white-space: nowrap;
-  cursor: pointer;
-`;
-
-const AdServiceButton = styled.div`
-  padding: 7px 16px;
-  border-radius: 50px;
-  background-color: ${Colors.Neutral100};
-  ${Caption12R};
-  white-space: nowrap;
-  cursor: pointer;
-`;
-
 const GlobalButton = styled.div`
-  padding: 7px 16px;
-  border-radius: 50px;
-  background-color: ${Colors.Neutral100};
-  ${Caption12R};
-  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `;
