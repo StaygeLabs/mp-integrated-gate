@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 import { mediaScreen } from 'components/cssToken/mediaScreen';
 import GNBCommunity from 'components/navigation/GNBCommunity';
 import { addImageQuery } from 'components/utils/addImageQuery';
+import * as Colors from 'components/cssToken/colors';
+import { Caption12R } from 'components/fonts/captions';
+import GlobalIcon from 'components/icons/globalIcon';
 
 function HomePage() {
   return (
@@ -16,6 +19,10 @@ function HomePage() {
         rightSlot={
           <RightMenuSection>
             <ServiceButton>서비스 문의</ServiceButton>
+            <AdServiceButton>광고 문의</AdServiceButton>
+            <GlobalButton>
+              <GlobalIcon color={Colors.Neutral700} />
+            </GlobalButton>
           </RightMenuSection>
         }
         box
@@ -40,9 +47,33 @@ const StyledKconLogo = styled.img`
 `;
 
 const RightMenuSection = styled.div`
-  width: 145px;
+  display: flex;
+  gap: 16px;
 `;
 
 const ServiceButton = styled.div`
-  width: 145px;
+  padding: 7px 16px;
+  border-radius: 50px;
+  background-color: ${Colors.Neutral100};
+  ${Caption12R};
+  white-space: nowrap;
+  cursor: pointer;
+`;
+
+const AdServiceButton = styled.div`
+  padding: 7px 16px;
+  border-radius: 50px;
+  background-color: ${Colors.Neutral100};
+  ${Caption12R};
+  white-space: nowrap;
+  cursor: pointer;
+`;
+
+const GlobalButton = styled.div`
+  padding: 7px 16px;
+  border-radius: 50px;
+  background-color: ${Colors.Neutral100};
+  ${Caption12R};
+  white-space: nowrap;
+  cursor: pointer;
 `;
