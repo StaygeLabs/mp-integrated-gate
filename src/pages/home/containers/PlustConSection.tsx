@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import * as Colors from 'components/cssToken/colors';
+import * as Button from 'components/button';
 
 const PlusConSection = () => (
   <Container>
@@ -11,6 +12,10 @@ const PlusConSection = () => (
         앞으로, KCON을 넘어 보다 다양한 페스티벌에서 함께 하기 위해 준비 중입니다.
         `}
       </SectionContent>
+      <ButtonWrap>
+        <Button.AppDownloadButton />
+        <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
+      </ButtonWrap>
     </LeftBox>
     <RightBox>
       <SectionImage src='/static/images/pluscon.png' alt='' />
@@ -53,7 +58,13 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionContent = styled.div`
+  margin: 40px 0;
   width: 100%;
   font-size: 16px;
   color: ${Colors.Neutral700};
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  gap: 20px;
 `;

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import React from 'react';
 import * as Colors from 'components/cssToken/colors';
+import * as Button from 'components/button';
 
-const MnetPlusSection = () => (
+const PlusChatSection = () => (
   <Container>
     <LeftBox>
       <SectionImage src='/static/images/pluschat.png' alt='' />
@@ -15,11 +15,15 @@ const MnetPlusSection = () => (
 팬 커뮤니티, 1:1 유료 채팅 (Chat), 공식 팬클럽, 앨범/MD 판매 등 아티스트 활동의 전반적인 내용을 언제나 함께 할 수 있도록 돕고 있습니다.
 `}
       </SectionContent>
+      <ButtonWrap>
+        <Button.AppDownloadButton />
+        <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
+      </ButtonWrap>
     </RightBox>
   </Container>
 );
 
-export default MnetPlusSection;
+export default PlusChatSection;
 
 const Container = styled.section`
   width: 100%;
@@ -55,7 +59,13 @@ const SectionTitle = styled.h2`
 `;
 
 const SectionContent = styled.div`
+  margin: 40px 0;
   width: 100%;
   font-size: 16px;
   color: ${Colors.Neutral700};
+`;
+
+const ButtonWrap = styled.div`
+  display: flex;
+  gap: 20px;
 `;
