@@ -7,6 +7,7 @@ import GlobalIcon from 'components/icons/GlobalIcon';
 import { ArrowIcon } from 'components/icons';
 import Footer from 'components/footer/Footer';
 import * as Button from 'components/button';
+import * as Section from './containers';
 
 function HomePage() {
   return (
@@ -34,6 +35,12 @@ function HomePage() {
           removeAnimation
           removeHiddenOverflow
         />
+        <Main>
+          <Section.MainBannerCarouselSection />
+          <Section.MnetPlusSection />
+          <Section.PlusChatSection />
+          <Section.PlustConSection />
+        </Main>
       </Container>
       <Footer />
     </ContainerWrap>
@@ -45,14 +52,12 @@ export default HomePage;
 const ContainerWrap = styled.div`
   background-color: white;
   position: relative;
-  height: 100vh;
 `;
 
 const Container = styled.div`
   ${mediaScreen};
   background-color: white;
   position: relative;
-  height: 100vh;
 `;
 
 const StyledKconLogo = styled.img`
@@ -69,4 +74,11 @@ const GlobalButton = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+`;
+
+const Main = styled.main`
+  margin-top: 70px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
