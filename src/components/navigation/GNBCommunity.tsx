@@ -62,6 +62,7 @@ const GNBWrapper = styled(animated.header, {
     `}
 
   z-index: 750;
+  padding: 0 110px;
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     margin-left: auto;

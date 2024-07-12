@@ -1,8 +1,8 @@
 import { SVGAttributes } from 'react';
-import Global from 'assets/images/icon_instagram.svg?react';
+import Instagram from 'assets/images/icon_instagram.svg?react';
 
-const GlobalIcon: React.FC<SVGAttributes<SVGElement>> = (props) => (
-  <Global {...props} />
+const InstagramIcon: React.FC<SVGAttributes<SVGElement>> = (props) => (
+  <Instagram {...props} />
 );
 
-export default GlobalIcon;
+export default InstagramIcon;

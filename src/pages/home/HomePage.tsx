@@ -10,35 +10,43 @@ import * as Button from 'components/button';
 
 function HomePage() {
   return (
-    <Container>
-      <GNBCommunity
-        height={70}
-        leftSlot={
-          <StyledKconLogo
-            src={addImageQuery(`/static/icons/gnb-logo.png`)}
-            alt='logo'
-          />
-        }
-        rightSlot={
-          <RightMenuSection>
-            <Button.GnbButton text='서비스 문의' />
-            <Button.GnbButton text='광고 문의' />
-            <GlobalButton>
-              <GlobalIcon color={Colors.Neutral700} />
-              <ArrowIcon color={Colors.Neutral700} />
-            </GlobalButton>
-          </RightMenuSection>
-        }
-        box
-        removeAnimation
-        removeHiddenOverflow
-      />
+    <ContainerWrap>
+      <Container>
+        <GNBCommunity
+          height={70}
+          leftSlot={
+            <StyledKconLogo
+              src={addImageQuery(`/static/icons/gnb-logo.png`)}
+              alt='logo'
+            />
+          }
+          rightSlot={
+            <RightMenuSection>
+              <Button.GnbButton text='서비스 문의' />
+              <Button.GnbButton text='광고 문의' />
+              <GlobalButton>
+                <GlobalIcon color={Colors.Neutral700} />
+                <ArrowIcon color={Colors.Neutral700} />
+              </GlobalButton>
+            </RightMenuSection>
+          }
+          box
+          removeAnimation
+          removeHiddenOverflow
+        />
+      </Container>
       <Footer />
-    </Container>
+    </ContainerWrap>
   );
 }
 
 export default HomePage;
+
+const ContainerWrap = styled.div`
+  background-color: white;
+  position: relative;
+  height: 100vh;
+`;
 
 const Container = styled.div`
   ${mediaScreen};

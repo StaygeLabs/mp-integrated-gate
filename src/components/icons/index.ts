@@ -2,6 +2,8 @@
 import ArrowIcon from './ArrowIcon';
 import GlobalIcon from './GlobalIcon';
 import InstagramIcon from './InstagramIcon';
+import XIcon from './XIcon';
+import YoutubeIcon from './YoutubeIcon';
 // @endindex
 
 export {
@@ -9,5 +11,7 @@ export {
   ArrowIcon,
   GlobalIcon,
   InstagramIcon,
+  XIcon,
+  YoutubeIcon,
   // @endindex
 };
