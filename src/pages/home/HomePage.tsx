@@ -8,10 +8,12 @@ import { ArrowIcon } from 'components/icons';
 import Footer from 'components/footer/Footer';
 import * as Button from 'components/button';
 import isMobile from 'store/utils/isMobile';
+import { useTranslate } from 'store/locale/hooks/useTranslate';
 // import * as Section from './containers';
 
 function HomePage() {
   const mobile = isMobile();
+  const t = useTranslate();
 
   return (
     <ContainerWrap>
@@ -28,8 +30,24 @@ function HomePage() {
             <RightMenuSection>
               {!mobile && (
                 <>
-                  <Button.GnbButton text='서비스 문의' />
-                  <Button.GnbButton text='광고 문의' />
+                  <Button.GnbButton
+                    text={t('.mp.integrated.gnb.service')}
+                    onClick={() =>
+                      window.open(
+                        'https://mnetplus.zendesk.com/hc/ko/requests/new',
+                        '_blank',
+                      )
+                    }
+                  />
+                  <Button.GnbButton
+                    text={t('.mp.integrated.gnb.ad')}
+                    onClick={() =>
+                      window.open(
+                        'https://mnet-plus.notion.site/Mnet-Plus-AD-c918dddf0bd74971af0e687e78992a4f',
+                        '_blank',
+                      )
+                    }
+                  />
                 </>
               )}
               <GlobalButton>

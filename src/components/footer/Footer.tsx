@@ -16,47 +16,153 @@ type MergeProps = FooterProps;
 function Footer(props: MergeProps) {
   const t = useTranslate();
   const mobile = isMobile();
+
   return (
     <FooterWrap>
       <StyledFooter className={props.className}>
-        {!mobile && (
-          <img
-            width={145}
-            src='static/icons/footer-logo.png'
-            alt='footer-logo'
-          />
+        {mobile ? (
+          <>
+            <ContactWrap>
+              <Contact>
+                <SecondLineTitle>Contact us</SecondLineTitle>
+                <ContactText
+                  onClick={() =>
+                    window.open(
+                      'https://mnetplus.zendesk.com/hc/ko/requests/new',
+                      '_blank',
+                    )
+                  }
+                >
+                  {t('.mp.integrated.gnb.service')}
+                </ContactText>
+                <ContactText
+                  onClick={() =>
+                    window.open(
+                      'https://mnet-plus.notion.site/Mnet-Plus-AD-c918dddf0bd74971af0e687e78992a4f',
+                      '_blank',
+                    )
+                  }
+                >
+                  {t('.mp.integrated.gnb.ad')}
+                </ContactText>
+              </Contact>
+              <Follow>
+                <SecondLineTitle>Follow Mnet Plus</SecondLineTitle>
+                <SnsWrap>
+                  <SnsBox
+                    onClick={() =>
+                      window.open(
+                        'https://www.instagram.com/mnetplus_official',
+                        '_blank',
+                      )
+                    }
+                  >
+                    <InstagramIcon color={Colors.Neutral900} />
+                  </SnsBox>
+                  <SnsBox
+                    onClick={() =>
+                      window.open('https://www.youtube.com/@MnetPlus', '_blank')
+                    }
+                  >
+                    <YoutubeIcon color={Colors.Neutral900} />
+                  </SnsBox>
+                  <SnsBox
+                    onClick={() =>
+                      window.open('https://x.com/mnetplus', '_blank')
+                    }
+                  >
+                    <XIcon color={Colors.Neutral900} />
+                  </SnsBox>
+                </SnsWrap>
+              </Follow>
+            </ContactWrap>
+            <SecondLine>
+              <Meta>
+                <div>{t('.footer__ceo')}</div>
+                <div>{t('.footer__address')}</div>
+                <div>{t('.footer__business-registration-no')}</div>
+                <div>{t('.footer__personal-information-manager')}</div>
+                <div>{t('.footer__hosting-service-provider')}</div>
+              </Meta>
+            </SecondLine>
+          </>
+        ) : (
+          <>
+            <img
+              width={145}
+              src='static/icons/footer-logo.png'
+              alt='footer-logo'
+            />
+
+            <SecondLine>
+              <Meta>
+                <div>{t('.footer__ceo')}</div>
+                <div>{t('.footer__address')}</div>
+                <div>{t('.footer__business-registration-no')}</div>
+                <div>{t('.footer__personal-information-manager')}</div>
+                <div>{t('.footer__hosting-service-provider')}</div>
+              </Meta>
+              <ContactWrap>
+                <Contact>
+                  <SecondLineTitle>Contact us</SecondLineTitle>
+                  <ContactText
+                    onClick={() =>
+                      window.open(
+                        'https://mnetplus.zendesk.com/hc/ko/requests/new',
+                        '_blank',
+                      )
+                    }
+                  >
+                    {t('.mp.integrated.gnb.service')}
+                  </ContactText>
+                  <ContactText
+                    onClick={() =>
+                      window.open(
+                        'https://mnet-plus.notion.site/Mnet-Plus-AD-c918dddf0bd74971af0e687e78992a4f',
+                        '_blank',
+                      )
+                    }
+                  >
+                    {t('.mp.integrated.gnb.ad')}
+                  </ContactText>
+                </Contact>
+                <Follow>
+                  <SecondLineTitle>Follow Mnet Plus</SecondLineTitle>
+                  <SnsWrap>
+                    <SnsBox
+                      onClick={() =>
+                        window.open(
+                          'https://www.instagram.com/mnetplus_official',
+                          '_blank',
+                        )
+                      }
+                    >
+                      <InstagramIcon color={Colors.Neutral900} />
+                    </SnsBox>
+                    <SnsBox
+                      onClick={() =>
+                        window.open(
+                          'https://www.youtube.com/@MnetPlus',
+                          '_blank',
+                        )
+                      }
+                    >
+                      <YoutubeIcon color={Colors.Neutral900} />
+                    </SnsBox>
+                    <SnsBox
+                      onClick={() =>
+                        window.open('https://x.com/mnetplus', '_blank')
+                      }
+                    >
+                      <XIcon color={Colors.Neutral900} />
+                    </SnsBox>
+                  </SnsWrap>
+                </Follow>
+              </ContactWrap>
+            </SecondLine>
+          </>
         )}
 
-        <SecondLine>
-          <Meta>
-            <div>{t('.footer__ceo')}</div>
-            <div>{t('.footer__address')}</div>
-            <div>{t('.footer__business-registration-no')}</div>
-            <div>{t('.footer__personal-information-manager')}</div>
-            <div>{t('.footer__hosting-service-provider')}</div>
-          </Meta>
-          <ContactWrap>
-            <Contact>
-              <SecondLineTitle>Contact us</SecondLineTitle>
-              <ContactText>서비스 문의</ContactText>
-              <ContactText>광고 문의</ContactText>
-            </Contact>
-            <Follow>
-              <SecondLineTitle>Follow Mnet Plus</SecondLineTitle>
-              <SnsWrap>
-                <SnsBox>
-                  <InstagramIcon color={Colors.Neutral900} />
-                </SnsBox>
-                <SnsBox>
-                  <YoutubeIcon color={Colors.Neutral900} />
-                </SnsBox>
-                <SnsBox>
-                  <XIcon color={Colors.Neutral900} />
-                </SnsBox>
-              </SnsWrap>
-            </Follow>
-          </ContactWrap>
-        </SecondLine>
         <FooterBorder />
         <Meta>© CJ ENM. All Rights Reserved.</Meta>
       </StyledFooter>
@@ -106,6 +212,10 @@ const ContactWrap = styled.div`
   display: flex;
   justify-content: end;
   align-items: start;
+
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 const Contact = styled.div`
@@ -161,4 +271,8 @@ const ContactText = styled.div`
   margin-bottom: 12px;
   ${Caption13R};
   color: ${Colors.Neutral900};
+
+  & + & {
+    margin-bottom: 0;
+  }
 `;
