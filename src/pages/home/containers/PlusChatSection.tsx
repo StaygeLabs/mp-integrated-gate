@@ -1,27 +1,48 @@
 import styled from '@emotion/styled';
 import * as Colors from 'components/cssToken/colors';
 import * as Button from 'components/button';
+import { useTranslate } from 'store/locale/hooks/useTranslate';
+import isMobile from 'store/utils/isMobile';
 
-const PlusChatSection = () => (
-  <Container>
-    <LeftBox>
-      <SectionImage src='/static/images/pluschat.png' alt='' />
-    </LeftBox>
-    <RightBox>
-      <SectionTitle>Plus Chat</SectionTitle>
-      <SectionContent>
-        {`Plus Chat 은 KPOP 아티스트와 글로벌 팬이 언제 어디서나 실시간으로 밀도있게
-소통하는 통합 팬 커뮤니케이션 플랫폼으로
-팬 커뮤니티, 1:1 유료 채팅 (Chat), 공식 팬클럽, 앨범/MD 판매 등 아티스트 활동의 전반적인 내용을 언제나 함께 할 수 있도록 돕고 있습니다.
-`}
-      </SectionContent>
-      <ButtonWrap>
-        <Button.AppDownloadButton />
-        <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
-      </ButtonWrap>
-    </RightBox>
-  </Container>
-);
+const PlusChatSection = () => {
+  const t = useTranslate();
+  const mobile = isMobile();
+  return (
+    <Container>
+      {mobile ? (
+        <>
+          <SectionImage src='/static/images/pluschat.png' alt='' />
+          <SectionTitle>
+            {t('.mp.integrated.section.pluschat.title')}
+          </SectionTitle>
+          <SectionContent>
+            {t('.mp.integrated.section.pluschat.content')}
+          </SectionContent>
+          <ButtonWrap>
+            <Button.AppDownloadButton />
+          </ButtonWrap>
+        </>
+      ) : (
+        <>
+          <LeftBox>
+            <SectionImage src='/static/images/pluschat.png' alt='' />
+          </LeftBox>
+          <RightBox>
+            <SectionTitle>
+              {t('.mp.integrated.section.pluschat.title')}
+            </SectionTitle>
+            <SectionContent>
+              {t('.mp.integrated.section.pluschat.content')}
+            </SectionContent>
+            <ButtonWrap>
+              <Button.AppDownloadButton />
+            </ButtonWrap>
+          </RightBox>
+        </>
+      )}
+    </Container>
+  );
+};
 
 export default PlusChatSection;
 
@@ -30,12 +51,16 @@ const Container = styled.section`
   display: flex;
   justify-content: space-between;
   background-color: ${Colors.Neutral50};
-  padding: 0 110px;
+  padding: 100px 110px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 80px 16px;
+  }
 `;
 
 const LeftBox = styled.div`
   width: 100%;
-  padding: 100px 0;
   margin-right: 106px;
 `;
 
@@ -49,6 +74,10 @@ const RightBox = styled.div`
 
 const SectionImage = styled.img`
   width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 28px;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -56,6 +85,14 @@ const SectionTitle = styled.h2`
   font-size: 42px;
   font-weight: 700;
   color: ${Colors.Neutral900};
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    white-space: pre-line;
+    text-align: center;
+    font-size: 32px;
+    padding: 0 40px;
+  }
 `;
 
 const SectionContent = styled.div`
@@ -63,9 +100,22 @@ const SectionContent = styled.div`
   width: 100%;
   font-size: 16px;
   color: ${Colors.Neutral700};
+
+  @media (max-width: 768px) {
+    margin: 30px 0;
+    text-align: center;
+  }
 `;
 
 const ButtonWrap = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;

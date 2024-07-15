@@ -2,28 +2,50 @@ import styled from '@emotion/styled';
 import React from 'react';
 import * as Colors from 'components/cssToken/colors';
 import * as Button from 'components/button';
+import { useTranslate } from 'store/locale/hooks/useTranslate';
+import isMobile from 'store/utils/isMobile';
 
-const MnetPlusSection = () => (
-  <Container>
-    <LeftBox>
-      <SectionTitle>Mnet Plus</SectionTitle>
-      <SectionContent>
-        {`Mnet Plus는 KPOP 콘텐츠를 바탕으로 팬덤의 다양한 인터랙션을 통해
-        아티스트를 발견해 성장시키고 팬덤을 확장시키기 위한 활동을 하는
-        서비스입니다. 현재까지 약 1,300만명의 글로벌 유저의 투표를 이끌며, 이제
-        투표 플랫폼을 넘어 CJ ENM의 다양한 온-오프라인 음악 콘텐츠를
-        인터랙티브하게 즐길 수 있는 콘텐츠 허브로 발전하고자 합니다.`}
-      </SectionContent>
-      <ButtonWrap>
-        <Button.AppDownloadButton />
-        <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
-      </ButtonWrap>
-    </LeftBox>
-    <RightBox>
-      <SectionImage src='/static/images/mnetplus.png' alt='' />
-    </RightBox>
-  </Container>
-);
+const MnetPlusSection = () => {
+  const t = useTranslate();
+  const mobile = isMobile();
+  return (
+    <Container>
+      {mobile ? (
+        <>
+          <SectionImage src='/static/images/mnetplus.png' alt='' />
+          <SectionTitle>
+            {t('.mp.integrated.section.mnetplus.title')}
+          </SectionTitle>
+          <SectionContent>
+            {t('.mp.integrated.section.mnetplus.content')}
+          </SectionContent>
+          <ButtonWrap>
+            <Button.AppDownloadButton />
+            <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
+          </ButtonWrap>
+        </>
+      ) : (
+        <>
+          <LeftBox>
+            <SectionTitle>
+              {t('.mp.integrated.section.mnetplus.title')}
+            </SectionTitle>
+            <SectionContent>
+              {t('.mp.integrated.section.mnetplus.content')}
+            </SectionContent>
+            <ButtonWrap>
+              <Button.AppDownloadButton />
+              <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
+            </ButtonWrap>
+          </LeftBox>
+          <RightBox>
+            <SectionImage src='/static/images/mnetplus.png' alt='' />
+          </RightBox>
+        </>
+      )}
+    </Container>
+  );
+};
 
 export default MnetPlusSection;
 
@@ -31,6 +53,12 @@ const Container = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 0 16px;
+    padding-bottom: 80px;
+  }
 `;
 
 const LeftBox = styled.div`
@@ -44,6 +72,10 @@ const RightBox = styled.div`
 
 const SectionImage = styled.img`
   width: 100%;
+
+  @media (max-width: 768px) {
+    padding: 0 28px;
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -51,6 +83,14 @@ const SectionTitle = styled.h2`
   font-size: 42px;
   font-weight: 700;
   color: ${Colors.Neutral900};
+
+  @media (max-width: 768px) {
+    margin-top: 30px;
+    white-space: pre-line;
+    text-align: center;
+    font-size: 32px;
+    padding: 0 60px;
+  }
 `;
 
 const SectionContent = styled.div`
@@ -58,9 +98,20 @@ const SectionContent = styled.div`
   width: 100%;
   font-size: 16px;
   color: ${Colors.Neutral700};
+
+  @media (max-width: 768px) {
+    margin: 30px 0;
+    text-align: center;
+  }
 `;
 
 const ButtonWrap = styled.div`
   display: flex;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;

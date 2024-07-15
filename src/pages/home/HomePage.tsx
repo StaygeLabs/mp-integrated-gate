@@ -9,7 +9,7 @@ import Footer from 'components/footer/Footer';
 import * as Button from 'components/button';
 import isMobile from 'store/utils/isMobile';
 import { useTranslate } from 'store/locale/hooks/useTranslate';
-// import * as Section from './containers';
+import * as Section from './containers';
 
 function HomePage() {
   const mobile = isMobile();
@@ -61,10 +61,10 @@ function HomePage() {
           removeHiddenOverflow
         />
         <Main>
-          {/* <Section.MainBannerCarouselSection />
+          <Section.MainBannerCarouselSection />
           <Section.MnetPlusSection />
           <Section.PlusChatSection />
-          <Section.PlustConSection /> */}
+          <Section.PlustConSection />
         </Main>
       </Container>
       <Footer />
