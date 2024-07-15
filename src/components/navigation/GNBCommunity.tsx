@@ -69,6 +69,11 @@ const GNBWrapper = styled(animated.header, {
     margin-right: auto;
   }
 
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 16px;
+  }
+
   display: flex;
   justify-content: space-between;
   text-align: center;

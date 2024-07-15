@@ -7,14 +7,17 @@ import GlobalIcon from 'components/icons/GlobalIcon';
 import { ArrowIcon } from 'components/icons';
 import Footer from 'components/footer/Footer';
 import * as Button from 'components/button';
-import * as Section from './containers';
+import isMobile from 'store/utils/isMobile';
+// import * as Section from './containers';
 
 function HomePage() {
+  const mobile = isMobile();
+
   return (
     <ContainerWrap>
       <Container>
         <GNBCommunity
-          height={70}
+          height={mobile ? 52 : 70}
           leftSlot={
             <StyledKconLogo
               src={addImageQuery(`/static/icons/gnb-logo.png`)}
@@ -23,8 +26,12 @@ function HomePage() {
           }
           rightSlot={
             <RightMenuSection>
-              <Button.GnbButton text='서비스 문의' />
-              <Button.GnbButton text='광고 문의' />
+              {!mobile && (
+                <>
+                  <Button.GnbButton text='서비스 문의' />
+                  <Button.GnbButton text='광고 문의' />
+                </>
+              )}
               <GlobalButton>
                 <GlobalIcon color={Colors.Neutral700} />
                 <ArrowIcon color={Colors.Neutral700} />
@@ -36,10 +43,10 @@ function HomePage() {
           removeHiddenOverflow
         />
         <Main>
-          <Section.MainBannerCarouselSection />
+          {/* <Section.MainBannerCarouselSection />
           <Section.MnetPlusSection />
           <Section.PlusChatSection />
-          <Section.PlustConSection />
+          <Section.PlustConSection /> */}
         </Main>
       </Container>
       <Footer />
@@ -58,10 +65,18 @@ const Container = styled.div`
   ${mediaScreen};
   background-color: white;
   position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const StyledKconLogo = styled.img`
   width: 145px;
+
+  @media (max-width: 768px) {
+    width: 130px;
+  }
 `;
 
 const RightMenuSection = styled.div`
@@ -81,4 +96,8 @@ const Main = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    margin-top: 52px;
+  }
 `;

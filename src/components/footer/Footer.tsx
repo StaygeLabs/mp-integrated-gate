@@ -5,6 +5,7 @@ import { Caption13R } from 'components/fonts/captions';
 import { InstagramIcon, XIcon } from 'components/icons';
 import YoutubeIcon from 'components/icons/YoutubeIcon';
 import { useTranslate } from 'store/locale/hooks/useTranslate';
+import isMobile from 'store/utils/isMobile';
 
 interface FooterProps {
   className?: string;
@@ -14,10 +15,17 @@ type MergeProps = FooterProps;
 
 function Footer(props: MergeProps) {
   const t = useTranslate();
+  const mobile = isMobile();
   return (
     <FooterWrap>
       <StyledFooter className={props.className}>
-        <img width={145} src='static/icons/footer-logo.png' alt='footer-logo' />
+        {!mobile && (
+          <img
+            width={145}
+            src='static/icons/footer-logo.png'
+            alt='footer-logo'
+          />
+        )}
 
         <SecondLine>
           <Meta>
@@ -80,6 +88,11 @@ const StyledFooter = styled.div`
   ${mediaScreen};
   background-color: ${Colors.Neutral50};
   padding: 75px 110px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 50px 16px;
+  }
 `;
 
 const FooterWrap = styled.footer`
