@@ -2,9 +2,6 @@ import styled from '@emotion/styled';
 import { mediaScreen } from 'components/cssToken/mediaScreen';
 import GNBCommunity from 'components/navigation/GNBCommunity';
 import { addImageQuery } from 'components/utils/addImageQuery';
-import * as Colors from 'components/cssToken/colors';
-import GlobalIcon from 'components/icons/GlobalIcon';
-import { ArrowIcon } from 'components/icons';
 import Footer from 'components/footer/Footer';
 import * as Button from 'components/button';
 import isMobile from 'store/utils/isMobile';
@@ -50,10 +47,7 @@ function HomePage() {
                   />
                 </>
               )}
-              <GlobalButton>
-                <GlobalIcon color={Colors.Neutral700} />
-                <ArrowIcon color={Colors.Neutral700} />
-              </GlobalButton>
+              <Button.GlobalButton />
             </RightMenuSection>
           }
           box
@@ -100,13 +94,6 @@ const StyledKconLogo = styled.img`
 const RightMenuSection = styled.div`
   display: flex;
   gap: 16px;
-`;
-
-const GlobalButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `;
 
 const Main = styled.main`
