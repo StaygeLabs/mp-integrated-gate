@@ -4,6 +4,8 @@ import * as Colors from 'components/cssToken/colors';
 import { Body16SB } from 'components/fonts/bodys';
 import { useTranslate } from 'store/locale/hooks/useTranslate';
 import isMobile from 'store/utils/isMobile';
+import AppleIcon from 'components/icons/AppleIcon';
+import GoogleIcon from 'components/icons/GoogleIcon';
 
 interface AppDownloadButtonProps {
   onClick?: () => void;
@@ -18,20 +20,11 @@ const AppDownloadButton: React.FC<AppDownloadButtonProps> = (props) => {
       {mobile ? (
         <MobileButtonWrap>
           <ButtonWrap onClick={props.onClick}>
-            <Icon
-              src='/static/icons/apple.png'
-              width='28'
-              onClick={() => console.log('')}
-            />
+            <AppleIcon />
             <ButtonText>App Store</ButtonText>
           </ButtonWrap>
           <ButtonWrap onClick={props.onClick}>
-            <Icon
-              src='/static/icons/google.png'
-              width='28'
-              onClick={() => console.log('')}
-            />
-
+            <GoogleIcon />
             <ButtonText>Google Play</ButtonText>
           </ButtonWrap>
         </MobileButtonWrap>
@@ -39,16 +32,12 @@ const AppDownloadButton: React.FC<AppDownloadButtonProps> = (props) => {
         <ButtonWrap onClick={props.onClick}>
           <ButtonText>{t('.mp.integrated.button.download')}</ButtonText>
           <IconWrap>
-            <Icon
-              src='/static/icons/apple.png'
-              width='28'
-              onClick={() => console.log('')}
-            />
-            <Icon
-              src='/static/icons/google.png'
-              width='28'
-              onClick={() => console.log('')}
-            />
+            <Icon>
+              <AppleIcon />
+            </Icon>
+            <Icon>
+              <GoogleIcon />
+            </Icon>
           </IconWrap>
         </ButtonWrap>
       )}
@@ -97,9 +86,14 @@ const ButtonText = styled.div`
   }
 `;
 
-const Icon = styled.img`
+const Icon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 28px;
   height: 28px;
+  border-radius: 4px;
+  background-color: ${Colors.Neutral800};
   cursor: pointer;
 `;
 

@@ -3,10 +3,38 @@ import * as Colors from 'components/cssToken/colors';
 import * as Button from 'components/button';
 import { useTranslate } from 'store/locale/hooks/useTranslate';
 import isMobile from 'store/utils/isMobile';
+import { Locale } from 'store/locale/types';
+import { QRModal } from 'components/modal/QRModal';
+import { useLocale } from 'store/locale/hooks/useLocale';
+import { Body16R } from 'components/fonts/bodys';
 
 const PlusChatSection = () => {
   const t = useTranslate();
   const mobile = isMobile();
+  const locale = useLocale();
+
+  const handleClickDownload = () => {
+    const text: { [key in Locale]: string[] } = {
+      ko: ['QR 코드를 스캔하여', 'Plus Chat 앱을 다운로드 해주세요'],
+      en: ['Please scan the QR code', 'to download the Plus Chat app'],
+      ja: [
+        'QRコードをスキャンして、',
+        'Plus Chatアプリをダウンロードしてください。',
+      ],
+      'zh-cn': ['Please scan the QR code', 'to download the Plus Chat app'],
+      'zh-tw': ['Please scan the QR code', 'to download the Plus Chat app'],
+    };
+    if (!mobile) {
+      QRModal({
+        title: 'Plus Chat',
+        imageUrl: '/static/images/pc-qr.png',
+        textList: text[locale as Locale],
+      });
+    } else {
+      // window.open(linkUrl);
+      // 딥링크 주소 받기
+    }
+  };
   return (
     <Container>
       {mobile ? (
@@ -35,7 +63,7 @@ const PlusChatSection = () => {
               {t('.mp.integrated.section.pluschat.content')}
             </SectionContent>
             <ButtonWrap>
-              <Button.AppDownloadButton />
+              <Button.AppDownloadButton onClick={handleClickDownload} />
             </ButtonWrap>
           </RightBox>
         </>
@@ -100,6 +128,7 @@ const SectionContent = styled.div`
   width: 100%;
   font-size: 16px;
   color: ${Colors.Neutral700};
+  ${Body16R};
 
   @media (max-width: 768px) {
     margin: 30px 0;

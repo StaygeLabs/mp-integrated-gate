@@ -80,7 +80,7 @@ const GlobalButtonWrap = styled.div`
 
 const DropBox = styled.div<{ isOpen: boolean }>`
   position: absolute;
-  top: -20px;
+  top: 35px;
   right: 0;
   padding: 0 16px;
   display: flex;
@@ -98,6 +98,8 @@ const DropBox = styled.div<{ isOpen: boolean }>`
 
   @media (max-width: 768px) {
     margin-top: 52px;
+    top: -20px;
+    right: 0;
   }
 `;
 

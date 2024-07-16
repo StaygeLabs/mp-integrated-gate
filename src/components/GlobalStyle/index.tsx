@@ -31,6 +31,7 @@ function GlobalStyle(props: MergeProps) {
         ${globalToastifyCss}
         * {
           box-sizing: border-box;
+          font-family: 'Pretendard';
         }
 
         @font-face {

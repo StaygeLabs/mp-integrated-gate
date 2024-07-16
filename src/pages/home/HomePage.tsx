@@ -93,6 +93,7 @@ const StyledKconLogo = styled.img`
 
 const RightMenuSection = styled.div`
   display: flex;
+  align-items: center;
   gap: 16px;
 `;
 

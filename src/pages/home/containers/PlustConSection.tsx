@@ -4,10 +4,38 @@ import * as Colors from 'components/cssToken/colors';
 import * as Button from 'components/button';
 import { useTranslate } from 'store/locale/hooks/useTranslate';
 import isMobile from 'store/utils/isMobile';
+import { useLocale } from 'store/locale/hooks/useLocale';
+import { Locale } from 'store/locale/types';
+import { QRModal } from 'components/modal/QRModal';
 
 const PlusConSection = () => {
   const t = useTranslate();
   const mobile = isMobile();
+  const locale = useLocale();
+
+  const handleClickDownload = () => {
+    const text: { [key in Locale]: string[] } = {
+      ko: ['QR 코드를 스캔하여', 'Plus Con 앱을 다운로드 해주세요'],
+      en: ['Please scan the QR code', 'to download the Plus Con app'],
+      ja: [
+        'QRコードをスキャンして、',
+        'PlusConアプリをダウンロードしてください。',
+      ],
+      'zh-cn': ['Please scan the QR code', 'to download the Plus Con app'],
+      'zh-tw': ['Please scan the QR code', 'to download the Plus Con app'],
+    };
+    if (!mobile) {
+      QRModal({
+        title: 'Plus Con',
+        imageUrl: '/static/images/pcon-qr.png',
+        textList: text[locale as Locale],
+      });
+    } else {
+      // window.open(linkUrl);
+      // 딥링크 주소 받기
+    }
+  };
+
   return (
     <Container>
       {mobile ? (
@@ -33,7 +61,7 @@ const PlusConSection = () => {
               {t('.mp.integrated.section.pluscon.content')}
             </SectionContent>
             <ButtonWrap>
-              <Button.AppDownloadButton />
+              <Button.AppDownloadButton onClick={handleClickDownload} />
             </ButtonWrap>
           </LeftBox>
           <RightBox>
