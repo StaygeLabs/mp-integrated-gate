@@ -7,6 +7,7 @@ import isMobile from 'store/utils/isMobile';
 import { useLocale } from 'store/locale/hooks/useLocale';
 import { Locale } from 'store/locale/types';
 import { QRModal } from 'components/modal/QRModal';
+import { MNET_PLUS_APP_URL } from 'CONSTANT';
 
 const PlusConSection = () => {
   const t = useTranslate();
@@ -48,7 +49,10 @@ const PlusConSection = () => {
             {t('.mp.integrated.section.pluscon.content')}
           </SectionContent>
           <ButtonWrap>
-            <Button.AppDownloadButton />
+            <Button.AppDownloadButton
+              mobileApple={MNET_PLUS_APP_URL.apple}
+              mobileGoogle={MNET_PLUS_APP_URL.google}
+            />
           </ButtonWrap>
         </>
       ) : (

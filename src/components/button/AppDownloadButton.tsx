@@ -8,6 +8,8 @@ import AppleIcon from 'components/icons/AppleIcon';
 import GoogleIcon from 'components/icons/GoogleIcon';
 
 interface AppDownloadButtonProps {
+  mobileApple?: string;
+  mobileGoogle?: string;
   onClick?: () => void;
 }
 
@@ -19,11 +21,11 @@ const AppDownloadButton: React.FC<AppDownloadButtonProps> = (props) => {
     <>
       {mobile ? (
         <MobileButtonWrap>
-          <ButtonWrap onClick={props.onClick}>
+          <ButtonWrap onClick={() => window.open(props.mobileApple)}>
             <AppleIcon />
             <ButtonText>App Store</ButtonText>
           </ButtonWrap>
-          <ButtonWrap onClick={props.onClick}>
+          <ButtonWrap onClick={() => window.open(props.mobileGoogle)}>
             <GoogleIcon />
             <ButtonText>Google Play</ButtonText>
           </ButtonWrap>

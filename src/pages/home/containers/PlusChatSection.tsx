@@ -7,6 +7,7 @@ import { Locale } from 'store/locale/types';
 import { QRModal } from 'components/modal/QRModal';
 import { useLocale } from 'store/locale/hooks/useLocale';
 import { Body16R } from 'components/fonts/bodys';
+import { MNET_PLUS_APP_URL } from 'CONSTANT';
 
 const PlusChatSection = () => {
   const t = useTranslate();
@@ -47,7 +48,10 @@ const PlusChatSection = () => {
             {t('.mp.integrated.section.pluschat.content')}
           </SectionContent>
           <ButtonWrap>
-            <Button.AppDownloadButton />
+            <Button.AppDownloadButton
+              mobileApple={MNET_PLUS_APP_URL.apple}
+              mobileGoogle={MNET_PLUS_APP_URL.google}
+            />
           </ButtonWrap>
         </>
       ) : (

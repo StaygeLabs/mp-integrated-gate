@@ -8,6 +8,7 @@ import { QRModal } from 'components/modal/QRModal';
 import { useLocale } from 'store/locale/hooks/useLocale';
 import { Locale } from 'store/locale/types';
 import { Body16R } from 'components/fonts/bodys';
+import { MNET_PLUS_APP_URL, MNET_PLUS_URL } from 'CONSTANT';
 
 const MnetPlusSection = () => {
   const t = useTranslate();
@@ -31,9 +32,6 @@ const MnetPlusSection = () => {
         imageUrl: '/static/images/mp-qr.png',
         textList: text[locale as Locale],
       });
-    } else {
-      // window.open(linkUrl);
-      // 딥링크 주소 받기
     }
   };
 
@@ -63,8 +61,12 @@ const MnetPlusSection = () => {
               {t('.mp.integrated.section.mnetplus.content')}
             </SectionContent>
             <ButtonWrap>
-              <Button.AppDownloadButton onClick={handleClickDownload} />
-              <Button.WebButton linkUrl='https://www.mnetplus.world/ko/' />
+              <Button.AppDownloadButton
+                onClick={handleClickDownload}
+                mobileApple={MNET_PLUS_APP_URL.apple}
+                mobileGoogle={MNET_PLUS_APP_URL.google}
+              />
+              <Button.WebButton linkUrl={MNET_PLUS_URL} />
             </ButtonWrap>
           </LeftBox>
           <RightBox>
